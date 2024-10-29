@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { useAppDispatch, useAppSelector } from "@/app/redux";
-import { setIsSidebarCollapsed } from "@/state";
+import { useAppDispatch, useAppSelector } from '@/app/redux'
+import { setIsSidebarCollapsed } from '@/state'
 import {
   Archive,
   CircleDollarSign,
@@ -11,17 +11,17 @@ import {
   Menu,
   SlidersHorizontal,
   User,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+} from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React from 'react'
 
 interface SidebarLinkProps {
-  href: string;
-  icon: LucideIcon;
-  label: string;
-  isCollapsed: boolean;
+  href: string
+  icon: LucideIcon
+  label: string
+  isCollapsed: boolean
 }
 
 const SidebarLink = ({
@@ -30,18 +30,18 @@ const SidebarLink = ({
   label,
   isCollapsed,
 }: SidebarLinkProps) => {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const isActive =
-    pathname === href || (pathname === "/" && href === "/dashboard");
+    pathname === href || (pathname === '/' && href === '/dashboard')
 
   return (
     <Link href={href}>
       <div
         className={`cursor-pointer flex items-center ${
-          isCollapsed ? "justify-center py-4" : "justify-start px-8 py-4"
+          isCollapsed ? 'justify-center py-4' : 'justify-start px-8 py-4'
         }
         hover:text-blue-500 hover:bg-blue-100 gap-3 transition-colors ${
-          isActive ? "bg-blue-200 text-white" : ""
+          isActive ? 'bg-blue-200 text-white' : ''
         }
       }`}
       >
@@ -49,36 +49,36 @@ const SidebarLink = ({
 
         <span
           className={`${
-            isCollapsed ? "hidden" : "block"
+            isCollapsed ? 'hidden' : 'block'
           } font-medium text-gray-700`}
         >
           {label}
         </span>
       </div>
     </Link>
-  );
-};
+  )
+}
 
 const Sidebar = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   const isSidebarCollapsed = useAppSelector(
-    (state) => state.global.isSidebarCollapsed
-  );
+    (state) => state.global.isSidebarCollapsed,
+  )
 
   const toggleSidebar = () => {
-    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
-  };
+    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))
+  }
 
   const sidebarClassNames = `fixed flex flex-col ${
-    isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64"
-  } bg-white transition-all duration-300 overflow-hidden h-full shadow-md z-40`;
+    isSidebarCollapsed ? 'w-0 md:w-16' : 'w-72 md:w-64'
+  } bg-white transition-all duration-300 overflow-hidden h-full shadow-md z-40`
 
   return (
     <div className={sidebarClassNames}>
       {/* TOP LOGO */}
       <div
         className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${
-          isSidebarCollapsed ? "px-5" : "px-8"
+          isSidebarCollapsed ? 'px-5' : 'px-8'
         }`}
       >
         <Image
@@ -90,7 +90,7 @@ const Sidebar = () => {
         />
         <h1
           className={`${
-            isSidebarCollapsed ? "hidden" : "block"
+            isSidebarCollapsed ? 'hidden' : 'block'
           } font-extrabold text-2xl`}
         >
           EDSTOCK
@@ -145,11 +145,11 @@ const Sidebar = () => {
       </div>
 
       {/* FOOTER */}
-      <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
+      <div className={`${isSidebarCollapsed ? 'hidden' : 'block'} mb-10`}>
         <p className="text-center text-xs text-gray-500">&copy; 2024 Edstock</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

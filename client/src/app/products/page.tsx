@@ -1,37 +1,33 @@
-"use client";
+'use client'
 
-import { useCreateProductMutation, useGetProductsQuery } from "@/state/api";
-import { PlusCircleIcon, SearchIcon } from "lucide-react";
-import { useState } from "react";
-import Header from "@/app/(components)/Header";
-import Rating from "@/app/(components)/Rating";
-import CreateProductModal from "./CreateProductModal";
-import Image from "next/image";
+import { useCreateProductMutation, useGetProductsQuery } from '@/state/api'
+import { PlusCircleIcon, SearchIcon } from 'lucide-react'
+import { useState } from 'react'
+import Header from '@/app/(components)/Header'
+import Rating from '@/app/(components)/Rating'
+import CreateProductModal from './CreateProductModal'
+import Image from 'next/image'
 
 type ProductFormData = {
-  name: string;
-  price: number;
-  stockQuantity: number;
-  rating: number;
-};
+  name: string
+  price: number
+  stockQuantity: number
+  rating: number
+}
 
 const Products = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const {
-    data: products,
-    isLoading,
-    isError,
-  } = useGetProductsQuery(searchTerm);
+  const { data: products, isLoading, isError } = useGetProductsQuery(searchTerm)
 
-  const [createProduct] = useCreateProductMutation();
+  const [createProduct] = useCreateProductMutation()
   const handleCreateProduct = async (productData: ProductFormData) => {
-    await createProduct(productData);
-  };
+    await createProduct(productData)
+  }
 
   if (isLoading) {
-    return <div className="py-4">Loading...</div>;
+    return <div className="py-4">Loading...</div>
   }
 
   if (isError || !products) {
@@ -39,7 +35,7 @@ const Products = () => {
       <div className="text-center text-red-500 py-4">
         Failed to fetch products
       </div>
-    );
+    )
   }
 
   return (
@@ -114,7 +110,7 @@ const Products = () => {
         onCreate={handleCreateProduct}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

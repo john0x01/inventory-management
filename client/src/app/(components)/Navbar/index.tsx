@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import { useAppDispatch, useAppSelector } from "@/app/redux";
-import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
-import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { useAppDispatch, useAppSelector } from '@/app/redux'
+import { setIsDarkMode, setIsSidebarCollapsed } from '@/state'
+import { Bell, Menu, Moon, Settings, Sun } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
 const Navbar = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   const isSidebarCollapsed = useAppSelector(
-    (state) => state.global.isSidebarCollapsed
-  );
-  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
+    (state) => state.global.isSidebarCollapsed,
+  )
+  const isDarkMode = useAppSelector((state) => state.global.isDarkMode)
 
   const toggleSidebar = () => {
-    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
-  };
+    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))
+  }
 
   const toggleDarkMode = () => {
-    dispatch(setIsDarkMode(!isDarkMode));
-  };
+    dispatch(setIsDarkMode(!isDarkMode))
+  }
 
   return (
     <div className="flex justify-between items-center w-full mb-7">
@@ -81,7 +81,7 @@ const Navbar = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

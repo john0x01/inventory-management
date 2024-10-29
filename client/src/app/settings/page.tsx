@@ -1,30 +1,30 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import Header from "@/app/(components)/Header";
+import React, { useState } from 'react'
+import Header from '@/app/(components)/Header'
 
 type UserSetting = {
-  label: string;
-  value: string | boolean;
-  type: "text" | "toggle";
-};
+  label: string
+  value: string | boolean
+  type: 'text' | 'toggle'
+}
 
 const mockSettings: UserSetting[] = [
-  { label: "Username", value: "john_doe", type: "text" },
-  { label: "Email", value: "john.doe@example.com", type: "text" },
-  { label: "Notification", value: true, type: "toggle" },
-  { label: "Dark Mode", value: false, type: "toggle" },
-  { label: "Language", value: "English", type: "text" },
-];
+  { label: 'Username', value: 'john_doe', type: 'text' },
+  { label: 'Email', value: 'john.doe@example.com', type: 'text' },
+  { label: 'Notification', value: true, type: 'toggle' },
+  { label: 'Dark Mode', value: false, type: 'toggle' },
+  { label: 'Language', value: 'English', type: 'text' },
+]
 
 const Settings = () => {
-  const [userSettings, setUserSettings] = useState<UserSetting[]>(mockSettings);
+  const [userSettings, setUserSettings] = useState<UserSetting[]>(mockSettings)
 
   const handleToggleChange = (index: number) => {
-    const settingsCopy = [...userSettings];
-    settingsCopy[index].value = !settingsCopy[index].value as boolean;
-    setUserSettings(settingsCopy);
-  };
+    const settingsCopy = [...userSettings]
+    settingsCopy[index].value = !settingsCopy[index].value as boolean
+    setUserSettings(settingsCopy)
+  }
 
   return (
     <div className="w-full">
@@ -46,7 +46,7 @@ const Settings = () => {
               <tr className="hover:bg-blue-50" key={setting.label}>
                 <td className="py-2 px-4">{setting.label}</td>
                 <td className="py-2 px-4">
-                  {setting.type === "toggle" ? (
+                  {setting.type === 'toggle' ? (
                     <label className="inline-flex relative items-center cursor-pointer">
                       <input
                         type="checkbox"
@@ -68,9 +68,9 @@ const Settings = () => {
                       className="px-4 py-2 border rounded-lg text-gray-500 focus:outline-none focus:border-blue-500"
                       value={setting.value as string}
                       onChange={(e) => {
-                        const settingsCopy = [...userSettings];
-                        settingsCopy[index].value = e.target.value;
-                        setUserSettings(settingsCopy);
+                        const settingsCopy = [...userSettings]
+                        settingsCopy[index].value = e.target.value
+                        setUserSettings(settingsCopy)
                       }}
                     />
                   )}
@@ -81,7 +81,7 @@ const Settings = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Settings;
+export default Settings
